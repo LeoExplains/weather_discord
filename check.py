@@ -1,6 +1,7 @@
 ## Helper functions for checking temperature
 from api import *
 
+# recommend Clothes
 clothes = { 
   'umbrella': False,
   'hat': False,
@@ -13,6 +14,7 @@ clothes = {
 
 # Check min & max temp
 def temp_change(obj):
+  """Check if temperature will get hotter or colder during the day"""
   # printing out the values 
   temp = {
           "morning": obj.temp_morn, 
@@ -57,6 +59,7 @@ def uv_recommendation(obj):
     sunprotect = (f"You should stay inside today. If you have to go out bring sunscreen. It's going to be a UV Index of: {obj.uvi:.1}")
     clothes['hat'] = True
     clothes['suncreen'] = True
+    clothes['inside'] = True
   return (sunprotect)
   
 # Check humidity
@@ -67,6 +70,7 @@ def uv_recommendation(obj):
   
 # check rainfall
 def rain_check(obj):
+  """Check if an umbrella is needed"""
   rain_protect = ""
   if (obj.chance_of_rain * 100) > 40:
     rain_protect = (f"You should bring an umbrella today. It's {obj.chance_of_rain:.1%} likely to rain today")
@@ -74,7 +78,8 @@ def rain_check(obj):
   return (rain_protect)
 
 #check description
+def check_description(obj):
+  "Check weather description to set inside"
+  return None
 
-# recommend Clothes
 
-# Set recommendation

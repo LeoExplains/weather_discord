@@ -1,17 +1,21 @@
 from datetime import datetime, timedelta
 from api import *
 from check import *
-dt = datetime.now()
-td = timedelta(days=7)
-# your calculated date
-my_date = dt + td
+
 # Help
 
-# Command
-print(f"Hello I can forcast up to {my_date} for you")
+def intro():
+  my_date = datetime.now() + timedelta(days=7) 
+  print(f"Hello I can forcast up to {my_date} for you")
+
+  
 # Display Results
+intro()
+
 
 location = get_lat_lon("cremorne")
+
+# Command
 try:
    city = (location[0], location[1], location[2])
    weather = get_current_weather(location[3], location[4])
@@ -19,8 +23,17 @@ try:
 except Exception:
    print("location not provided")
 
-print(temp_change(today))
-print(uv_recommendation(today))
-print(rain_check(today))
-print(clothes)
-# print(get_pollution(location[0], location[1]))
+# Set recommendation
+def chat_recommendation(obj):
+  # take all the other checks and prints out one block of text
+
+  #Forcast for today
+
+  #Temperature changes
+
+  #Recommendations
+  temp_change(obj)
+  print(uv_recommendation(obj))
+  print(rain_check(obj))
+  print(obj)
+  return None
