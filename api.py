@@ -80,7 +80,7 @@ def get_lat_lon(city):
     coord = (location[i]['name'],location[i]['country'],location[i]['state'],location[i]['lat'], location[i]['lon'])
     print(coord)
     choice = input(f"""is this the right location? (y/n): """)
-    if choice == "y":
+    if choice.lower() == "y":
       return(coord)
     else:
       continue
