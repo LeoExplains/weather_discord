@@ -1,7 +1,7 @@
 ## Helper functions for checking temperature
 
 # Check min & max temp
-
+def 
 # Check humidity
 
 # check rainfall
