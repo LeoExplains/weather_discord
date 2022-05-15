@@ -22,4 +22,5 @@ except Exception:
 print(temp_change(today))
 print(uv_recommendation(today))
 print(rain_check(today))
+print(clothes)
 # print(get_pollution(location[0], location[1]))
