@@ -12,6 +12,10 @@ clothes = {
   'Inside': False
 }
 
+def clothes_true():
+  result = list({k: v for k, v in clothes.items() if v == True})
+  return result
+  
 # Check min & max temp
 def temp_change(obj):
   """Check if temperature will get hotter or colder during the day"""
