@@ -3,13 +3,13 @@ from api import *
 
 # recommend Clothes
 clothes = { 
-  'umbrella': False,
-  'hat': False,
-  'jumper': False,
-  'windbreaker': False,
-  'suncreen': False,
-  'mask': False,
-  'inside': False
+  'Umbrella': False,
+  'Hat': False,
+  'Jumper': False,
+  'Windbreaker': False,
+  'Suncreen': False,
+  'Mask': False,
+  'Inside': False
 }
 
 # Check min & max temp
@@ -23,9 +23,9 @@ def temp_change(obj):
           "night": obj.temp_night
          }
   cold = min(temp, key=temp.get)
-  cold_temp = temp['cold']
+  cold_temp = temp[cold]
   hot = max(temp, key=temp.get)
-  hot_temp = temp['hot']
+  hot_temp = temp[hot]
   change = f"{obj.temp_max - obj.temp_min:.2f}"
   cold_text=(f'The coldest part of the day will be in the {cold} with a temp of {temp[cold]}\u00B0c')
   hot_text=(f'The warmest part of the day will be in the {hot} with a temp of {temp[hot]}\u00B0c')

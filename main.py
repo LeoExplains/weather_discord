@@ -24,19 +24,27 @@ except Exception:
    print("location not provided")
 
 # Set recommendation
+def clothes_true():
+  result = list({k: v for k, v in clothes.items() if v == True})
+  return result
 
 def short_chat(obj):
   """Return short description of weather object"""
   text = (f"""
-  Forcast -- {obj.name} --
-  City: {obj.city, obj.state, obj.country}
-  Min: {obj.min} Max: {obj.max}
-  Coldest: {temp_change(obj)[0]}
-  Warmest: 
-  UV Index: 
-  Clothes: 
+Forcast -- {obj.name.title()} --
+City: {obj.city}, {obj.state}, {obj.country}
+{"-" * 20}
+{obj.description.title()}
+Min: {obj.temp_min}\u00B0c || Max: {obj.temp_max}\u00B0c
+Coldest time of day: {temp_change(obj)[0].title()} - {temp_change(obj)[1]}\u00B0c
+Warmest time of day: {temp_change(obj)[2].title()} - {temp_change(obj)[3]}\u00B0c
+Change over day: {temp_change(obj)[6]}\u00B0c
+UV Index: {obj.uvi}
+Chance of Rain: {obj.chance_of_rain:.1%}
+Bring: {", ".join(str(x) for x in clothes_true())}
   """)
   return text
+
 def long_chat(obj):
   # take all the other checks and prints out one block of text
 
@@ -51,7 +59,7 @@ def long_chat(obj):
   print(clothes)
   check_description(obj)
   print(today.msg())
-  print(short_chat)
+  print(short_chat(obj))
   return None
 
 long_chat(today)
