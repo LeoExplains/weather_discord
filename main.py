@@ -27,6 +27,9 @@ except Exception:
 
 def short_chat(obj):
   """Return short description of weather object"""
+  uv_recommendation(obj)
+  rain_check(obj)
+  check_description(obj)
   text = (f"""
 Forcast -- {obj.name.title()} --
 City: {obj.city}, {obj.state}, {obj.country}
@@ -43,6 +46,9 @@ Bring: {", ".join(str(x) for x in clothes_true())}
   return text
 
 def long_chat(obj):
+  uv_recommendation(obj)
+  rain_check(obj)
+  check_description(obj)
   """Return long description of weather object"""
   text = (f"""
   Forcast for {obj.name} in {obj.city},{obj.state},{obj.country}.
