@@ -10,6 +10,7 @@ weather_api = os.environ['WEATHER_API']
 class weather_of_day:
   """Object for storing weather data"""
   def __init__(self):
+    self.name = ""
     self.city = ""
     self.lat = 0
     self.lon = 0
@@ -18,6 +19,7 @@ class weather_of_day:
     self.datestring = 0
     # conditions
     self.uvi = 0
+    self.id = 0
     self.description = ""
     self.humidity = 0
     self.chance_of_rain = 0
@@ -39,37 +41,38 @@ class weather_of_day:
     #pollution if available
     self.aqi = 0
   def msg(self):
-    return f"""This is the weather object
-    City: {self.city},
-    State: {self.state},
-    Country: {self.country},
-    Lat: {self.lat},
-    Lon: {self.lon},
-    Country: {self.country},
-    Date Time: {self.datestring},
-    Date Time Text: {datetime.utcfromtimestamp(self.datestring)},
-    -----
-    UV Index: {self.uvi},
-    Description: {self.description},
-    Humidity: {self.humidity}%,
-    Chance of Rain: {self.chance_of_rain:.02%},
-    Rainfall: {self.rain},
-    Air Quality Index: {self.aqi},
-    Wind Speed: {self.windspeed},
-    Wind Gust: {self.windgust},
-    -----
-    Min: {self.temp_min}\u00B0c,
-    Max: {self.temp_max}\u00B0c,
-    -----
-    Morning: {self.temp_morn}\u00B0c,
-    Day: {self.temp_day}\u00B0c,
-    Evening: {self.temp_eve}\u00B0c,
-    Night: {self.temp_night}\u00B0c,
-    -----
-    Feels like Morning: {self.feels_like_morn}\u00B0c,
-    Feels like Day: {self.feels_like_day}\u00B0c,
-    Feels like Evening: {self.feels_like_eve}\u00B0c,
-    Feels like Night: {self.feels_like_night}\u00B0c,
+    return f"""
+This is the forcast for {self.name}
+City: {self.city},
+State: {self.state},
+Country: {self.country},
+Lat: {self.lat},
+Lon: {self.lon},
+Date Time: {self.datestring},
+Date Time Text: {datetime.utcfromtimestamp(self.datestring)},
+-----
+UV Index: {self.uvi},
+Id: {self.id},
+Description: {self.description},
+Humidity: {self.humidity}%,
+Chance of Rain: {self.chance_of_rain:.02%},
+Rainfall: {self.rain},
+Air Quality Index: {self.aqi},
+Wind Speed: {self.windspeed},
+Wind Gust: {self.windgust},
+-----
+Min: {self.temp_min}\u00B0c,
+Max: {self.temp_max}\u00B0c,
+-----
+Morning: {self.temp_morn}\u00B0c,
+Day: {self.temp_day}\u00B0c,
+Evening: {self.temp_eve}\u00B0c,
+Night: {self.temp_night}\u00B0c,
+-----
+Feels like Morning: {self.feels_like_morn}\u00B0c,
+Feels like Day: {self.feels_like_day}\u00B0c,
+Feels like Evening: {self.feels_like_eve}\u00B0c,
+Feels like Night: {self.feels_like_night}\u00B0c,
     """
 
 def get_lat_lon(city):
@@ -105,10 +108,13 @@ seven_days = weather_of_day()
 
 days = [today, tomorrow, two_days, three_days, four_days, five_days, six_days, seven_days]
 
+days_str = ["today", "tomorrow", "two days time", "three days time", "four days time", "five days time", "six days time", "seven days time"]
+
 def set_days_weather(data, city):
   """Initalizes objects in days array with data from api response"""
   day_list = data['daily']
   for i, j in enumerate(data):
+    days[i].name = days_str[i]
     days[i].city = city[0]
     days[i].state = city[2]
     days[i].country = city[1]
@@ -116,6 +122,7 @@ def set_days_weather(data, city):
     days[i].lon = data['lon']
   for i, j in enumerate(day_list):
     days[i].datestring = j['dt']
+    days[i].id = j['weather'][0]['id']
     days[i].description = j['weather'][0]['description']
     days[i].uvi = j['uvi']
     days[i].humidity = j['humidity']

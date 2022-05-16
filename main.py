@@ -24,7 +24,20 @@ except Exception:
    print("location not provided")
 
 # Set recommendation
-def chat_recommendation(obj):
+
+def short_chat(obj):
+  """Return short description of weather object"""
+  text = (f"""
+  Forcast -- {obj.name} --
+  City: {obj.city, obj.state, obj.country}
+  Min: {obj.min} Max: {obj.max}
+  Coldest: {temp_change(obj)[0]}
+  Warmest: 
+  UV Index: 
+  Clothes: 
+  """)
+  return text
+def long_chat(obj):
   # take all the other checks and prints out one block of text
 
   #Forcast for today
@@ -32,8 +45,13 @@ def chat_recommendation(obj):
   #Temperature changes
 
   #Recommendations
-  temp_change(obj)
+  print(temp_change(obj))
   print(uv_recommendation(obj))
   print(rain_check(obj))
-  print(obj)
+  print(clothes)
+  check_description(obj)
+  print(today.msg())
+  print(short_chat)
   return None
+
+long_chat(today)

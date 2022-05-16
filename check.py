@@ -23,7 +23,9 @@ def temp_change(obj):
           "night": obj.temp_night
          }
   cold = min(temp, key=temp.get)
+  cold_temp = temp['cold']
   hot = max(temp, key=temp.get)
+  hot_temp = temp['hot']
   change = f"{obj.temp_max - obj.temp_min:.2f}"
   cold_text=(f'The coldest part of the day will be in the {cold} with a temp of {temp[cold]}\u00B0c')
   hot_text=(f'The warmest part of the day will be in the {hot} with a temp of {temp[hot]}\u00B0c')
@@ -39,7 +41,7 @@ def temp_change(obj):
     change_text = (f"Afternoon > Evening will get colder by {obj.temp_day - obj.temp_morn:.2f}\u00B0c. You should bring a jumper")
   else: 
     change_text = (f"It's going to stay mostly the same temperature during the day")
-  return (cold, cold_text, hot, hot_text,change, change_text)
+  return (cold, cold_temp, hot, hot_temp, cold_text, hot_text,change, change_text)
 
 # check uv index
 def uv_recommendation(obj):
@@ -80,6 +82,15 @@ def rain_check(obj):
 #check description
 def check_description(obj):
   "Check weather description to set inside"
-  return None
+  # Snow
+  if obj.id > 601 and obj.id < 700:
+    clothes['inside'] = True
+  # Rain
+  if obj.id > 502 and obj.id < 600:
+    clothes['inside'] = True
+    clothes['umbrella'] = True
+  # Thunderstorm
+  if obj.id > 200 and obj.id < 300:
+    clothes['inside'] = True 
 
 
