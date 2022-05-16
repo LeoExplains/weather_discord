@@ -28,8 +28,21 @@ class MyClient(discord.Client):
                 input = await self.wait_for('message', check=is_correct, timeout=15.0)
             except asyncio.TimeoutError:
                 return await message.channel.send(f'Sorry, you took too long, defaulting to Melbourne Vic AU.')
-      
+            # still need to display all location options and confirm with user.
             await message.channel.send(set_user_location(get_lat_lon(input.content)))
+            await message.channel.send(short_chat(today))
+
+        if message.content.startswith('!s tomorrow'):
+            await message.channel.send(intro(), mention_author=True)
+            await message.reply('Set a location:', mention_author=True)
+            def is_correct(m):
+                return m.author == message.author
+            try:
+                input = await self.wait_for('message', check=is_correct, timeout=15.0)
+            except asyncio.TimeoutError:
+                return await message.channel.send(f'Sorry, you took too long, defaulting to Melbourne Vic AU.')
+            # still need to display all location options and confirm with user.
+            set_user_location(get_lat_lon(input.content))
             await message.channel.send(short_chat(today))
 
 
