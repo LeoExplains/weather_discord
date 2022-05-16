@@ -6,12 +6,12 @@ from check import *
 
 def intro():
   my_date = datetime.now() + timedelta(days=7) 
-  print(f"Hello I can forcast up to {my_date} for you")
+  print(f"Hello I can forcast up to {my_date:.%d.%m.%Y} for you")
 
   
 # Display Results
 intro()
-location = get_lat_lon(input("Please enter your city"))
+location = get_lat_lon(input("Please enter your city: "))
 
 # Command
 try:
@@ -67,6 +67,5 @@ You might want to bring your {", ".join(str(x) for x in clothes_true())}
   return text
 
 #Recommendations
-print(today.msg())
 print(short_chat(today))
 print(long_chat(today))
