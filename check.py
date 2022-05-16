@@ -80,7 +80,7 @@ def rain_check(obj):
   """Check if an umbrella is needed"""
   rain_protect = ""
   if (obj.chance_of_rain * 100) > 60:
-    rain_protect = (f"It's {obj.chance_of_rain:.1%} likely to rain today")
+    rain_protect = (f"It's {obj.chance_of_rain:.1%} likely to rain {obj.name}")
     clothes['umbrella'] = True
   return (rain_protect)
 
