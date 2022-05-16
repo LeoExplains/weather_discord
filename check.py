@@ -31,18 +31,19 @@ def temp_change(obj):
   hot = max(temp, key=temp.get)
   hot_temp = temp[hot]
   change = f"{obj.temp_max - obj.temp_min:.2f}"
-  cold_text=(f'The coldest part of the day will be in the {cold} with a temp of {temp[cold]}\u00B0c')
-  hot_text=(f'The warmest part of the day will be in the {hot} with a temp of {temp[hot]}\u00B0c')
+  cold_text=(f'The coldest part of the day will be in the {cold.title()} with a temp of {temp[cold]}\u00B0c')
+  hot_text=(f'The warmest part of the day will be in the {hot.title()} with a temp of {temp[hot]}\u00B0c')
   change_text = ""
   if (obj.temp_day - obj.temp_morn) > 3:
-    change_text = (f"Morning > Afternoon will get warmer by {obj.temp_day - obj.temp_morn:.2f}\u00B0c")
+    change_text = (f"Afternoon will be warmer than Morning by {obj.temp_day - obj.temp_morn:.2f}\u00B0c")
   elif (obj.temp_eve - obj.temp_day) > 3:
-    change_text = (f"Afternoon > Evening will get warmer by {obj.temp_day - obj.temp_morn:.2f}\u00B0c")
+    change_text = (f"Evening will be warmer than Afternoon by {obj.temp_day - obj.temp_morn:.2f}\u00B0c")
   elif (obj.temp_day - obj.temp_morn) < -2:
-    change_text = (f"Morning > Afternoon will get colder by {obj.temp_day - obj.temp_morn:.2f}\u00B0c. You should bring a jumper")
-    clothes['jumper']
+    change_text = (f"Afternoon will be colder than Morning by {obj.temp_day - obj.temp_morn:.2f}\u00B0c.")
+    clothes['jumper'] = True
   elif (obj.temp_day - obj.temp_morn) < -2:
-    change_text = (f"Afternoon > Evening will get colder by {obj.temp_day - obj.temp_morn:.2f}\u00B0c. You should bring a jumper")
+    change_text = (f"Evening will be colder than Afternoon {obj.temp_day - obj.temp_morn:.2f}\u00B0c.")
+    clothes['jumper'] = True
   else: 
     change_text = (f"It's going to stay mostly the same temperature during the day")
   return (cold, cold_temp, hot, hot_temp, cold_text, hot_text,change, change_text)

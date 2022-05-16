@@ -51,19 +51,19 @@ def long_chat(obj):
   check_description(obj)
   """Return long description of weather object"""
   text = (f"""
-Forcast for {obj.name} in {obj.city},{obj.state},{obj.country}.
-It's going to be a top of {obj.temp_max} with a low of {obj.temp_min}.
+Forcast for {obj.name} in {obj.city}, {obj.state}, {obj.country}.
+It's going to be a top of {obj.temp_max}\u00B0c with a low of {obj.temp_min}\u00B0c.
 {obj.name.title()} will feel like:
-Morning - {obj.feels_like_morn}
-Day  {obj.feels_like_day}
-Evening: {obj.feels_like_eve}
-Night: {obj.feels_like_night}
+Morning - {obj.feels_like_morn}\u00B0c
+Day - {obj.feels_like_day}\u00B0c
+Evening - {obj.feels_like_eve}\u00B0c
+Night - {obj.feels_like_night}\u00B0c
 {temp_change(obj)[4]}.
 {temp_change(obj)[5]}.
 {temp_change(obj)[7]}.
 The difference between the min and max will be {temp_change(obj)[6]}\u00B0c
-{uv_recommendation(obj)}
 You might want to bring your {", ".join(str(x) for x in clothes_true())}
+{uv_recommendation(obj)}
 {rain_check(obj)}
   """)
   return text
