@@ -3,13 +3,13 @@ from api import *
 
 # recommend Clothes
 clothes = { 
-  'Umbrella': False,
-  'Hat': False,
-  'Jumper': False,
-  'Windbreaker': False,
-  'Suncreen': False,
-  'Mask': False,
-  'Stay inside': False
+  'umbrella': False,
+  'hat': False,
+  'jumper': False,
+  'windbreaker': False,
+  'sunscreen': False,
+  'mask': False,
+  'stay inside': False
 }
 
 def clothes_true():
@@ -61,11 +61,11 @@ def uv_recommendation(obj):
   if obj.uvi >= 3:
     sunprotect = (f"It's going to be a UV Index of: {obj.uvi:.1f}")
     clothes['hat'] = True
-    clothes['suncreen'] = True
+    clothes['sunscreen'] = True
   elif obj.uvi >= 8:
     sunprotect = (f"It's going to be a UV Index of: {obj.uvi:.1}")
     clothes['hat'] = True
-    clothes['suncreen'] = True
+    clothes['sunscreen'] = True
     clothes['stay inside'] = True
   return (sunprotect)
   
@@ -79,7 +79,7 @@ def uv_recommendation(obj):
 def rain_check(obj):
   """Check if an umbrella is needed"""
   rain_protect = ""
-  if (obj.chance_of_rain * 100) > 40:
+  if (obj.chance_of_rain * 100) > 60:
     rain_protect = (f"It's {obj.chance_of_rain:.1%} likely to rain today")
     clothes['umbrella'] = True
   return (rain_protect)
