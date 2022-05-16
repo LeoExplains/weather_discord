@@ -11,9 +11,7 @@ def intro():
   
 # Display Results
 intro()
-
-
-location = get_lat_lon("cremorne")
+location = get_lat_lon(input("Please enter your city"))
 
 # Command
 try:

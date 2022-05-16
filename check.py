@@ -9,7 +9,7 @@ clothes = {
   'Windbreaker': False,
   'Suncreen': False,
   'Mask': False,
-  'Inside': False
+  'Stay inside': False
 }
 
 def clothes_true():
@@ -63,10 +63,10 @@ def uv_recommendation(obj):
     clothes['hat'] = True
     clothes['suncreen'] = True
   elif obj.uvi >= 8:
-    sunprotect = (f"You should stay inside today. If you have to go out bring sunscreen. It's going to be a UV Index of: {obj.uvi:.1}")
+    sunprotect = (f"It's going to be a UV Index of: {obj.uvi:.1}")
     clothes['hat'] = True
     clothes['suncreen'] = True
-    clothes['inside'] = True
+    clothes['stay inside'] = True
   return (sunprotect)
   
 # Check humidity
@@ -89,13 +89,13 @@ def check_description(obj):
   "Check weather description to set inside"
   # Snow
   if obj.id > 601 and obj.id < 700:
-    clothes['inside'] = True
+    clothes['stay inside'] = True
   # Rain
   if obj.id > 502 and obj.id < 600:
-    clothes['inside'] = True
+    clothes['stay inside'] = True
     clothes['umbrella'] = True
   # Thunderstorm
   if obj.id > 200 and obj.id < 300:
-    clothes['inside'] = True 
+    clothes['stay inside'] = True 
 
 
