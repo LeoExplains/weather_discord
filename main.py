@@ -60,7 +60,7 @@ def long_chat(obj):
   Night: {obj.feels_like_night}
   {temp_change(obj)[4]}.
   {temp_change(obj)[5]}.
-  {temp_change(obj)[7]} with a difference between the min and max of {temp_change(obj)[6]}\u00B0c
+  {temp_change(obj)[7]}, with a difference between the min and max of {temp_change(obj)[6]}\u00B0c
   You might want to bring your {", ".join(str(x) for x in clothes_true())}
   {rain_check(obj)}
   {uv_recommendation(obj)}

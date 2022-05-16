@@ -58,7 +58,7 @@ def uv_recommendation(obj):
 # extreme (11 and above).
   sunprotect = ""
   if obj.uvi >= 3:
-    sunprotect = (f"You should wear suncreen or a hat today. It's going to be a UV Index of: {obj.uvi:.1f}")
+    sunprotect = (f"It's going to be a UV Index of: {obj.uvi:.1f}")
     clothes['hat'] = True
     clothes['suncreen'] = True
   elif obj.uvi >= 8:
@@ -79,7 +79,7 @@ def rain_check(obj):
   """Check if an umbrella is needed"""
   rain_protect = ""
   if (obj.chance_of_rain * 100) > 40:
-    rain_protect = (f"You should bring an umbrella today. It's {obj.chance_of_rain:.1%} likely to rain today")
+    rain_protect = (f"It's {obj.chance_of_rain:.1%} likely to rain today")
     clothes['umbrella'] = True
   return (rain_protect)
 
