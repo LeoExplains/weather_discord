@@ -53,17 +53,18 @@ def long_chat(obj):
   text = (f"""
 Forcast for {obj.name} in {obj.city},{obj.state},{obj.country}.
 It's going to be a top of {obj.temp_max} with a low of {obj.temp_min}.
-{obj.name.title()} will feel like
-Morning: {obj.feels_like_morn}
-Day: {obj.feels_like_day}
+{obj.name.title()} will feel like:
+Morning - {obj.feels_like_morn}
+Day  {obj.feels_like_day}
 Evening: {obj.feels_like_eve}
 Night: {obj.feels_like_night}
 {temp_change(obj)[4]}.
 {temp_change(obj)[5]}.
-{temp_change(obj)[7]}, with a difference between the min and max of {temp_change(obj)[6]}\u00B0c
+{temp_change(obj)[7]}.
+The difference between the min and max will be {temp_change(obj)[6]}\u00B0c
+{uv_recommendation(obj)}
 You might want to bring your {", ".join(str(x) for x in clothes_true())}
 {rain_check(obj)}
-{uv_recommendation(obj)}
   """)
   return text
 
