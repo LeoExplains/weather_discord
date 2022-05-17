@@ -21,16 +21,18 @@ class MyClient(discord.Client):
           await message.channel.send(intro())
 
         if message.content.startswith('!today'):
-          await message.reply('Set a location:')
+          await message.reply('Enter a location:')
           input = await self.wait_for('message')
           result = get_lat_lon(input.content)
-          await message.channel.send("select a location number")
+          await message.channel.send("Please wait while I look up locations matching that")
           for i, j in enumerate(result):
             option = f"{i + 1}: {j}"
-            #await message.channel.send("Is this the location? (y/n)")
             await message.channel.send(option)
-            
+
+          await message.channel.send("Select a location number:")  
           input = await self.wait_for('message')
+          # would like to consolidate this below into a cleaner construct
+          
           if int(input.content) == 1:
             await message.channel.send(result[0])
             user_location = result[0]
@@ -77,24 +79,3 @@ intents = discord.Intents(messages=True)
 client = MyClient(intents=intents)
 token = os.environ.get("DISCORD_BOT_SECRET")
 client.run(token)
-
-# ####################
-# print(get_lat_lon("melbourne"))
-# result = get_lat_lon("melbourne")
-# def on_message():
-#   for i, j in enumerate(result):
-#     print(i + 1, j)
-#     choice = input("is this the location? (y/n) ")
-#     if choice == 'y':
-#       return j
-
-# if message.content == 'ping':
-#             await message.channel.send('pong')
-
-# print(on_message())
-#     choice = input(f"""is this the right location? (y/n): """)
-#     if choice.lower() == "y":
-#       return(coord)
-#     else:
-#       continue
-#   return(-1)
