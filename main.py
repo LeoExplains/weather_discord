@@ -20,7 +20,7 @@ class MyClient(discord.Client):
         if message.content.startswith('!weather'):
           await message.channel.send(intro())
 
-        if message.content.startswith('!location'):
+        if message.content.startswith('!today'):
           await message.reply('Set a location:')
           input = await self.wait_for('message')
           result = get_lat_lon(input.content)
@@ -32,23 +32,43 @@ class MyClient(discord.Client):
             
           input = await self.wait_for('message')
           if int(input.content) == 1:
-              await message.channel.send(result[0])
+            await message.channel.send(result[0])
+            user_location = result[0]
+          elif int(input.content) == 2:
+            await message.channel.send(result[1])
+            user_location = result[1]
+          elif int(input.content) == 3:
+            await message.channel.send(result[1])
+            user_location = result[2]
+          elif int(input.content) == 4:
+            await message.channel.send(result[1])
+            user_location = result[3]
+          elif int(input.content) == 5:
+            await message.channel.send(result[1])
+            user_location = result[4]
+          elif int(input.content) == 6:
+            await message.channel.send(result[1])
+            user_location = result[5]
+          elif int(input.content) == 7:
+            await message.channel.send(result[1])
+            user_location = result[6]
+          elif int(input.content) == 8:
+            await message.channel.send(result[1])
+            user_location = result[7]
+          elif int(input.content) == 9:
+            await message.channel.send(result[1])
+            user_location = result[8]
+          elif int(input.content) == 10:
+            await message.channel.send(result[1])
+            user_location = result[9]
           else: 
             await message.channel.send(type(input.content))
             await message.channel.send(input.content)
               
-            def is_choice(m):
-              return m.author == message.author and m.content.isdigit()
-
-            # try:
-            #       input = await self.wait_for('message', check=is_choice, timeout=15.0)
-            # except asyncio.TimeoutError: # fix this to be defined
-            #       return await message.channel.send(f'Sorry, you took too long, defaulting to Melbourne Vic AU.')
             
-            
-            # still need to display all location options and confirm with user.
-          # await message.channel.send(set_user_location(get_lat_lon(input.content)))
-          # await message.channel.send(short_chat(today))
+          # still need to display all location options and confirm with user.
+          set_user_location(user_location)
+          await message.channel.send(short_chat(today))
 
 
 intents = discord.Intents(messages=True)
