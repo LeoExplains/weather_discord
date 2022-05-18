@@ -23,6 +23,10 @@ class MyClient(discord.Client):
         if message.content.startswith('!today'):
           await message.reply('Enter a location:')
           input = await self.wait_for('message')
+          symbols = "!@#$%^&*()_+?><|~`][;:"
+          if input.content in symbols:
+            await message.channel.send("Sorry that location contains unsupported symbols")
+            return -1
           result = get_lat_lon(input.content)
           await message.channel.send("Please wait while I look up locations matching that")
           for i, j in enumerate(result):
