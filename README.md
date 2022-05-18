@@ -15,6 +15,7 @@ Prints tomorrows weather forcast for a location
 ```
 ## Logic
 If chance of rain > 60% it will recommend an `umbrella`
+
 If UV index is over 3 it will recommend `hat`. `sunscreen`
 
 ## Resources Used
