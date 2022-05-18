@@ -13,6 +13,9 @@ Prints tomorrows weather forcast for a location
 ```
 !tomorrow
 ```
+## Logic
+If chance of rain > 60% it will recommend an `umbrella`
+If UV index is over 3 it will recommend `hat`. `sunscreen`
 
 ## Resources Used
 * [Open Weather Map API](https://openweathermap.org/api) - Weather data
