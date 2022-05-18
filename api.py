@@ -77,18 +77,13 @@ Feels like Night: {self.feels_like_night}\u00B0c,
 
 def get_lat_lon(city):
   """ This is code for setting a lat, lon from a location name (lat, lon)"""
-  try:
-    response = requests.get(f"http://api.openweathermap.org/geo/1.0/direct?q={city}&limit=10&appid={weather_api}")
-    location = json.loads(response.text)
-    responses = []
-    for i, j in enumerate(location):
-      coord = (location[i]['name'],location[i]['country'],location[i]['state'],location[i]['lat'], location[i]['lon'])
-      responses.append(coord)
-      return responses
-  except:
-    print ('No location was found, please try again')
-    
-      
+  response = requests.get(f"http://api.openweathermap.org/geo/1.0/direct?q={city}&limit=10&appid={weather_api}")
+  location = json.loads(response.text)
+  responses = []
+  for i, j in enumerate(location):
+    coord = (location[i]['name'],location[i]['country'],location[i]['state'],location[i]['lat'], location[i]['lon'])
+    responses.append(coord)
+  return responses
 
 
 def get_current_weather(lat, lon):

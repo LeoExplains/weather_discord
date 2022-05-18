@@ -13,7 +13,7 @@ def set_user_location(location):
      weather = get_current_weather(location[3], location[4])
      set_days_weather(weather, city)
   except Exception:
-     location = -1
+     print("location not provided")
   return location
 
 
