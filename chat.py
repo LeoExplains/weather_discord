@@ -24,16 +24,18 @@ def short_chat(obj):
   check_description(obj)
   bring = ", ".join(str(x) for x in clothes_true())
   text = (f"""
-Forcast -- {obj.name.title()} --
-City: {obj.city}, {obj.state}, {obj.country}
+:satellite: Forcast -- {obj.name.title()} -- :wave:
+{"+" * 20}
+:cityscape: - City: {obj.city}, {obj.state}, {obj.country}
 {"-" * 20}
 [ {obj.description.title()} ]
-Min: {obj.temp_min}\u00B0c || Max: {obj.temp_max}\u00B0c
-Coldest time of day: {temp_change(obj)[0].title()} - {temp_change(obj)[1]}\u00B0c
-Warmest time of day: {temp_change(obj)[2].title()} - {temp_change(obj)[3]}\u00B0c
-Change over day: {temp_change(obj)[6]}\u00B0c
-UV Index: {obj.uvi}
-Chance of Rain: {obj.chance_of_rain:.1%}
+{"-" * 20}
+:thermometer: Min: {obj.temp_min}\u00B0c || Max: {obj.temp_max}\u00B0c
+:blue_square: Coldest time of day: {temp_change(obj)[0].title()} - {temp_change(obj)[1]}\u00B0c
+:orange_square: Warmest time of day: {temp_change(obj)[2].title()} - {temp_change(obj)[3]}\u00B0c
+:bar_chart: Change over day: {temp_change(obj)[6]}\u00B0c
+:sunglasses: UV Index: {obj.uvi}
+:cloud_rain: Chance of Rain: {obj.chance_of_rain:.1%}
 {"Bring:" if bring != "" else ""} {bring}
 """)
   return text

@@ -3,11 +3,11 @@ from api import *
 
 # recommend Clothes
 clothes = { 
-  'umbrella': False,
-  'hat': False,
-  'jumper': False,
+  'umbrella :umbrella:' : False,
+  'hat :billed_cap:': False,
+  'jumper :coat:': False,
   'windbreaker': False,
-  'sunscreen': False,
+  'sunscreen :beach_umbrella:': False,
   'mask': False,
   'stay inside': False
 }
@@ -30,7 +30,7 @@ def temp_change(obj):
   cold_temp = temp[cold]
   hot = max(temp, key=temp.get)
   hot_temp = temp[hot]
-  change = f"{obj.temp_max - obj.temp_min:.2f}"
+  change = f"{abs(obj.temp_max - obj.temp_min):.2f}"
   cold_text=(f'The coldest part of the day will be in the {cold.title()} with a temp of {temp[cold]}\u00B0c')
   hot_text=(f'The warmest part of the day will be in the {hot.title()} with a temp of {temp[hot]}\u00B0c')
   change_text = ""
@@ -60,12 +60,12 @@ def uv_recommendation(obj):
   sunprotect = ""
   if obj.uvi >= 3:
     sunprotect = (f"It's going to be a UV Index of: {obj.uvi:.1f}")
-    clothes['hat'] = True
-    clothes['sunscreen'] = True
+    clothes['hat :billed_cap:'] = True
+    clothes['sunscreen :beach_umbrella:'] = True
   elif obj.uvi >= 8:
     sunprotect = (f"It's going to be a UV Index of: {obj.uvi:.1}")
-    clothes['hat'] = True
-    clothes['sunscreen'] = True
+    clothes['hat :billed_cap:'] = True
+    clothes['sunscreen :beach_umbrella:'] = True
     clothes['stay inside'] = True
   return (sunprotect)
   
@@ -81,7 +81,7 @@ def rain_check(obj):
   rain_protect = ""
   if (obj.chance_of_rain * 100) > 60:
     rain_protect = (f"It's {obj.chance_of_rain:.1%} likely to rain {obj.name}")
-    clothes['umbrella'] = True
+    clothes['umbrella :umbrella:'] = True
   return (rain_protect)
 
 #check description
@@ -93,7 +93,7 @@ def check_description(obj):
   # Rain
   if obj.id > 502 and obj.id < 600:
     clothes['stay inside'] = True
-    clothes['umbrella'] = True
+    clothes['umbrella :umbrella:'] = True
   # Thunderstorm
   if obj.id > 200 and obj.id < 300:
     clothes['stay inside'] = True 
