@@ -28,13 +28,13 @@ class MyClient(discord.Client):
             await message.channel.send("Sorry that location contains unsupported symbols")
             return -1
           result = get_lat_lon(input.content)
-          await message.channel.send("Please wait while I look up locations matching that")
+          await message.channel.send("Please wait while I look up locations matching that. I will send an all clear when I am ready")
           for i, j in enumerate(result):
             option = f"{i + 1}: {j}"
             await message.channel.send(option)  
-          await message.channel.send("Select a location number:")
+          await message.channel.send("All clear, Select a location number:")
           input = await self.wait_for('message')
-    
+          #only ten options are supported from the api settings
           if int(input.content) == 1:
             await message.channel.send(result[0])
             user_location = result[0]
@@ -65,9 +65,7 @@ class MyClient(discord.Client):
           elif int(input.content) == 10:
             await message.channel.send(result[1])
             user_location = result[9]
-                 
-            
-          # still need to display all location options and confirm with user.
+    
           set_user_location(user_location)
           await message.channel.send(short_chat(today))
 
@@ -79,13 +77,13 @@ class MyClient(discord.Client):
             await message.channel.send("Sorry that location contains unsupported symbols")
             return -1
           result = get_lat_lon(input.content)
-          await message.channel.send("Please wait while I look up locations matching that")
+          await message.channel.send("Please wait while I look up locations matching that. I will send an all clear when I am ready")
           for i, j in enumerate(result):
             option = f"{i + 1}: {j}"
             await message.channel.send(option)
-          await message.channel.send("Select a location number:")  
+          await message.channel.send("All clear, Select a location number:")  
           input = await self.wait_for('message')
-          
+          #only ten options are supported from the api settings
           if int(input.content) == 1:
             await message.channel.send(result[0])
             user_location = result[0]
@@ -120,8 +118,6 @@ class MyClient(discord.Client):
             await message.channel.send(type(input.content))
             await message.channel.send(input.content)
               
-            
-          # still need to display all location options and confirm with user.
           set_user_location(user_location)
           await message.channel.send(short_chat(tomorrow))
 
